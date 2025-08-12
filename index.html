@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Development Program on DWDM Transmission Network</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #F28C28;
+            --secondary: #E88C2D;
+            --body: #FCF5EC;
+            --text: #1D1D1B;
+            --secondary-dark: #9F4B14;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--body);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(242, 140, 40, 0.3);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="optical" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="3" fill="white" opacity="0.1"/><path d="M5 15h25M15 5v25" stroke="white" stroke-width="1" opacity="0.08"/><circle cx="15" cy="15" r="8" fill="none" stroke="white" stroke-width="0.5" opacity="0.06"/></pattern></defs><rect width="100" height="100" fill="url(%23optical)"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: var(--white);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Partners Section */
+        .partners {
+            background: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .partners h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-item img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Overview Section */
+        .overview {
+            background: var(--body);
+            padding: 4rem 0;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .content-text h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(242, 140, 40, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Training Format Section */
+        .training-format {
+            background: var(--white);
+            padding: 4rem 0;
+        }
+
+        .format-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .format-text h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .phase-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .phase-card {
+            background: var(--body);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(242, 140, 40, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .phase-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .phase-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-number {
+            background: var(--primary);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .format-highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(242, 140, 40, 0.3);
+        }
+
+        .format-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .format-highlight .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Countries Section */
+        .countries {
+            background: var(--body);
+            padding: 4rem 0;
+        }
+
+        .countries h2 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .countries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .country-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(242, 140, 40, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .country-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .country-flag {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .country-card h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-card.lead {
+            border: 3px solid var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+
+        .country-card.lead h3 {
+            color: var(--white);
+        }
+
+        /* Technology Section */
+        .technology {
+            background: var(--white);
+            padding: 4rem 0;
+        }
+
+        .technology h2 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tech-card {
+            background: var(--body);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tech-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .tech-card h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Outcomes Section */
+        .outcomes {
+            background: var(--body);
+            padding: 4rem 0;
+        }
+
+        .outcomes h2 {
+            text-align: center;
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .outcome-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 20px rgba(242, 140, 40, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .outcome-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .outcome-card h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .outcome-card p {
+            color: var(--text);
+        }
+
+        /* Lead Institution Section */
+        .lead-institution {
+            background: var(--white);
+            padding: 4rem 0;
+        }
+
+        .institution-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .institution-text h2 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .institution-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .feature-item {
+            background: var(--body);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(242, 140, 40, 0.1);
+        }
+
+        .feature-item h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .institution-highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(242, 140, 40, 0.3);
+        }
+
+        .institution-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .institution-highlight .flag {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Future Directions */
+        .future {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .future-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .future h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .future-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .future-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .future-item h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-dark);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .sdg-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .sdg-tag {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .content-grid,
+            .format-content,
+            .institution-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logos {
+                gap: 2rem;
+            }
+
+            .logo-item {
+                height: 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .countries-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tech-grid,
+            .outcomes-grid,
+            .future-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .countries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                padding: 3rem 0;
+            }
+
+            .overview,
+            .training-format,
+            .countries,
+            .technology,
+            .outcomes,
+            .lead-institution,
+            .future {
+                padding: 3rem 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Scroll Animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Optical transmission themed animations */
+        @keyframes opticalPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(242, 140, 40, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(242, 140, 40, 0); }
+        }
+
+        .tech-icon:hover {
+            animation: opticalPulse 2s ease-in-out;
+        }
+
+        /* DWDM wavelength animation */
+        @keyframes wavelengthFlow {
+            0% { opacity: 0.5; transform: translateX(-20px) scale(0.8); }
+            50% { opacity: 1; transform: translateX(10px) scale(1.1); }
+            100% { opacity: 0.5; transform: translateX(-20px) scale(0.8); }
+        }
+
+        .phase-card:hover {
+            animation: wavelengthFlow 3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">DWDM Training</a>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#format">Training Format</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#outcomes">Outcomes</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>DWDM Training Program</h1>
+            <div class="subtitle">Dense Wavelength Division Multiplexing</div>
+            <p>Building technical capacity among NREN engineers in DWDM transmission network technology through innovative blended training combining theoretical foundation with hands-on practical experience</p>
+            <a href="#overview" class="cta-button">Explore Program</a>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+        <div class="container">
+            <h2 class="scroll-reveal">Supported By</h2>
+            <div class="logos scroll-reveal">
+                <div class="logo-item">
+                    <img src="images/logos/tein-logo.png" alt="TEIN Cooperation Center" />
+                </div>
+                <div class="logo-item">
+                    <img src="images/logos/asia-connect-logo.png" alt="Asi@Connect" />
+                </div>
+                <div class="logo-item">
+                    <img src="images/logos/eu-logo.png" alt="European Union" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="overview">
+        <div class="container">
+            <div class="content-grid">
+                <div class="content-text scroll-reveal">
+                    <h2>Program Overview</h2>
+                    <p>Led by Bangladesh Research and Education Network (BdREN), this comprehensive program builds technical capacity among NREN engineers in Dense Wavelength Division Multiplexing (DWDM) technology across eleven countries.</p>
+                    <p>Our innovative two-phase blended format combines online theoretical sessions with intensive hands-on training using real CISCO DWDM ONS equipment, promoting collaboration, supporting gender inclusion, and bridging the digital divide in LMICs.</p>
+                </div>
+                <div class="stats-grid scroll-reveal">
+                    <div class="stat-card">
+                        <span class="stat-number">11</span>
+                        <span class="stat-label">Countries Involved</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Training Phases</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Virtual Sessions</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Hands-on Days</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Format Section -->
+    <section id="format" class="training-format">
+        <div class="container">
+            <div class="format-content">
+                <div class="format-text scroll-reveal">
+                    <h2>Two-Phase Training Format</h2>
+                    <p>Our innovative blended approach maximizes learning outcomes through a carefully structured progression from theoretical foundation to practical application.</p>
+                    
+                    <div class="phase-cards">
+                        <div class="phase-card">
+                            <div class="phase-number">1</div>
+                            <h3>📚 Virtual Theoretical Phase</h3>
+                            <p><strong>Duration:</strong> 8 sessions over Zoom Platform<br>
+                            <strong>Schedule:</strong> 2 hours, twice weekly<br>
+                            <strong>Focus:</strong> SDH principles, DWDM overview, key technologies (OTN, FOADM, ROADM, ASON)</p>
+                        </div>
+                        <div class="phase-card">
+                            <div class="phase-number">2</div>
+                            <h3>🔧 Hands-on Practical Phase</h3>
+                            <p><strong>Duration:</strong> 4-day intensive training<br>
+                            <strong>Location:</strong> BdREN, Dhaka, Bangladesh<br>
+                            <strong>Focus:</strong> CISCO DWDM ONS equipment, real production network environment</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="format-highlight scroll-reveal">
+                    <div class="icon">🌐</div>
+                    <h3>Blended Learning</h3>
+                    <p><strong>Entry Requirement:</strong> Pass Phase 1 Quiz</p>
+                    <p><strong>Equipment:</strong> CISCO DWDM ONS15454</p>
+                    <p><strong>Network:</strong> TEIN Infrastructure</p>
+                    <p><strong>Methodology:</strong> Train-the-Trainer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countries Section -->
+    <section class="countries">
+        <div class="container">
+            <h2 class="scroll-reveal">Participating Countries</h2>
+            <div class="countries-grid">
+                <div class="country-card lead scroll-reveal">
+                    <div class="country-flag">🇧🇩</div>
+                    <h3>Bangladesh</h3>
+                    <p>Lead Country - BdREN</p>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇦🇫</div>
+                    <h3>Afghanistan</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇧🇹</div>
+                    <h3>Bhutan</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇰🇭</div>
+                    <h3>Cambodia</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇱🇦</div>
+                    <h3>Laos</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇳🇵</div>
+                    <h3>Nepal</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇵🇰</div>
+                    <h3>Pakistan</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇵🇭</div>
+                    <h3>Philippines</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇱🇰</div>
+                    <h3>Sri Lanka</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇹🇭</div>
+                    <h3>Thailand</h3>
+                </div>
+                <div class="country-card scroll-reveal">
+                    <div class="country-flag">🇻🇳</div>
+                    <h3>Vietnam</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="technology" class="technology">
+        <div class="container">
+            <h2 class="scroll-reveal">DWDM Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-card scroll-reveal">
+                    <div class="tech-icon">🌐</div>
+                    <h3>DWDM Fundamentals</h3>
+                    <p>Dense Wavelength Division Multiplexing principles and optical network architecture</p>
+                </div>
+                <div class="tech-card scroll-reveal">
+                    <div class="tech-icon">🔧</div>
+                    <h3>CISCO ONS15454</h3>
+                    <p>Hands-on experience with professional CISCO DWDM ONS equipment in production environment</p>
+                </div>
+                <div class="tech-card scroll-reveal">
+                    <div class="tech-icon">📡</div>
+                    <h3>SDH Principles</h3>
+                    <p>Synchronous Digital Hierarchy working principles and network fundamentals</p>
+                </div>
+                <div class="tech-card scroll-reveal">
+                    <div class="tech-icon">🔀</div>
+                    <h3>OTN Technology</h3>
+                    <p>Optical Transport Network protocols and advanced multiplexing techniques</p>
+                </div>
+                <div class="tech-card scroll-reveal">
+                    <div class="tech-icon">🌊</div>
+                    <h3>ROADM Systems</h3>
+                    <p>Reconfigurable Optical Add-Drop Multiplexer and flexible optical networking</p>
+                </div>
+                <div class="tech-card scroll-reveal">
+                    <div class="tech-icon">🎯</div>
+                    <h3>ASON Networks</h3>
+                    <p>Automatically Switched Optical Network design and implementation strategies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Institution Section -->
+    <section class="lead-institution">
+        <div class="container">
+            <div class="institution-content">
+                <div class="institution-text scroll-reveal">
+                    <h2>Lead Institution</h2>
+                    <p>Bangladesh Research and Education Network (BdREN) serves as the lead institution, providing comprehensive DWDM training facilities including access to modern CISCO DWDM ONS equipment in a real production network environment.</p>
+                    <p>BdREN's expertise in optical network systems, combined with industry partnership with Huawei Bangladesh, ensures participants receive world-class training in transmission network technology.</p>
+                    
+                    <div class="institution-features">
+                        <div class="feature-item">
+                            <h4>🏗️ Production Network Lab</h4>
+                            <p>Real CISCO DWDM ONS15454 equipment for authentic hands-on training experience.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>👨‍🏫 Industry Partnership</h4>
+                            <p>Collaboration with Huawei Bangladesh providing expert industry trainers and insights.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>🎓 Train-the-Trainer Model</h4>
+                            <p>Participants become regional trainers, ensuring sustainable knowledge transfer.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>👩‍💻 Gender Inclusion</h4>
+                            <p>30% quota for female engineers promoting gender equality in transmission networks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="institution-highlight scroll-reveal">
+                    <div class="flag">🇧🇩</div>
+                    <h3>BdREN Bangladesh</h3>
+                    <p><strong>Lead Institution:</strong> Bangladesh Research and Education Network</p>
+                    <p><strong>Industry Partner:</strong> Huawei Bangladesh</p>
+                    <p><strong>Location:</strong> Dhaka, Bangladesh</p>
+                    <p><strong>Network:</strong> TEIN Infrastructure</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section id="outcomes" class="outcomes">
+        <div class="container">
+            <h2 class="scroll-reveal">Key Outcomes</h2>
+            <div class="outcomes-grid">
+                <div class="outcome-card scroll-reveal">
+                    <h3>🎓 Enhanced DWDM Expertise</h3>
+                    <p>NREN engineers gained comprehensive theoretical and practical understanding of state-of-the-art Optical Network System (ONS) DWDM technology for network deployment and operation.</p>
+                </div>
+                <div class="outcome-card scroll-reveal">
+                    <h3>📈 Stimulated Network Demand</h3>
+                    <p>Successfully aroused latent demand among participating NRENs without existing DWDM networks, helping them understand benefits of establishing sustainable infrastructures.</p>
+                </div>
+                <div class="outcome-card scroll-reveal">
+                    <h3>🌍 Digital Divide Bridge</h3>
+                    <p>Significantly helped bridge the digital divide among Least Developed Countries (LDCs) and Lower Middle-Income Countries (LMICs) through enhanced technical capacity.</p>
+                </div>
+                <div class="outcome-card scroll-reveal">
+                    <h3>👩‍💻 Gender Empowerment</h3>
+                    <p>Contributed to educating female engineers and increasing their skills in transmission networks, supporting gender equality in the engineering sector.</p>
+                </div>
+                <div class="outcome-card scroll-reveal">
+                    <h3>🤝 Regional Collaboration</h3>
+                    <p>Enhanced collaboration and fostered development of human networks among NRENs, with engineers exchanging knowledge and ideas for future problem-solving.</p>
+                </div>
+                <div class="outcome-card scroll-reveal">
+                    <h3>🔄 Blended Training Innovation</h3>
+                    <p>Successfully introduced new blended training format combining virtual and physical components, achieving higher benefit-cost ratio and maximum training benefits.</p>
+                </div>
+                <div class="outcome-card scroll-reveal">
+                    <h3>📡 TEIN Network Utilization</h3>
+                    <p>Virtual training phase led to higher utilization of TEIN network as overseas participants connected through it, demonstrating unique research network leveraging.</p>
+                </div>
+                <div class="outcome-card scroll-reveal">
+                    <h3>📚 Knowledge Sustainability</h3>
+                    <p>Established train-the-trainer methodology ensuring participants can share acquired knowledge with engineers in their respective NRENs and member institutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Directions -->
+    <section class="future">
+        <div class="container">
+            <div class="future-content scroll-reveal">
+                <h2>Future Directions</h2>
+                <p>Expanding DWDM technology adoption and capacity building across the Asia-Pacific region through sustained knowledge transfer and network development initiatives.</p>
+                
+                <div class="future-grid">
+                    <div class="future-item">
+                        <h3>🚀 Knowledge Application</h3>
+                        <p>Engineers apply gained expertise in deploying and operating DWDM network systems and services in their respective NRENs.</p>
+                    </div>
+                    <div class="future-item">
+                        <h3>🔄 Workshop Replication</h3>
+                        <p>Participants organize similar workshops in their countries, spreading Optical Network Technology knowledge for self-sustainable capacity development.</p>
+                    </div>
+                    <div class="future-item">
+                        <h3>📚 Continued Support</h3>
+                        <p>All workshop materials and instructor contacts updated in Learning Management System for participants' future access and reference.</p>
+                    </div>
+                    <div class="future-item">
+                        <h3>🛠️ Installation Assistance</h3>
+                        <p>BdREN engineers remain available to assist other NRENs with future DWDM-based transmission network installations and configurations.</p>
+                    </div>
+                    <div class="future-item">
+                        <h3>🎯 Service Deployment</h3>
+                        <p>Junior engineers deploy new services targeting member institutions using learned network virtualization and security configurations.</p>
+                    </div>
+                    <div class="future-item">
+                        <h3>🌐 Regional Expansion</h3>
+                        <p>Organizational learning from active participation enables broader regional optical network technology adoption and implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Program Information</h3>
+                    <p>The DWDM Transmission Network Capacity Development Program is funded under the 5th Call of the Asi@Connect program, supported by the European Union and implemented through TEIN Cooperation Center.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Technical Excellence</h3>
+                    <p>Building technical capacity in Dense Wavelength Division Multiplexing technology across eleven countries, bridging the digital divide through innovative blended training methodology.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Sustainable Development Goals</h3>
+                    <div class="sdg-tags">
+                        <span class="sdg-tag">SDG 4: Quality Education</span>
+                        <span class="sdg-tag">SDG 5: Gender Equality</span>
+                        <span class="sdg-tag">SDG 9: Innovation & Infrastructure</span>
+                        <span class="sdg-tag">SDG 17: Partnerships</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DWDM Training Program. Led by BdREN, funded by the European Union through Asi@Connect.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all scroll-reveal elements
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navLinks.style.display = 'flex';
+            } else {
+                navLinks.style.display = 'none';
+            }
+        });
+
+        // Add loading animation to stat numbers
+        const animateNumbers = () => {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.textContent);
+                let current = 0;
+                const increment = target / 30;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current);
+                    }
+                }, 50);
+            });
+        };
+
+        // Trigger number animation when stats section comes into view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumbers();
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsGrid = document.querySelector('.stats-grid');
+        if (statsGrid) {
+            statsObserver.observe(statsGrid);
+        }
+
+        // Add staggered animation to cards
+        const addStaggeredAnimation = () => {
+            const cardContainers = [
+                '.countries-grid .country-card',
+                '.tech-grid .tech-card',
+                '.outcomes-grid .outcome-card'
+            ];
+
+            cardContainers.forEach(selector => {
+                const cards = document.querySelectorAll(selector);
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+            });
+        };
+
+        // Initialize staggered animations when page loads
+        document.addEventListener('DOMContentLoaded', addStaggeredAnimation);
+
+        // Add optical transmission-themed hover effects
+        document.querySelectorAll('.tech-icon').forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                icon.style.transform = 'scale(1.3) rotate(15deg)';
+                icon.style.boxShadow = '0 8px 25px rgba(242, 140, 40, 0.4)';
+            });
+            
+            icon.addEventListener('mouseleave', () => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+                icon.style.boxShadow = 'none';
+            });
+        });
+
+        // Add DWDM wavelength simulation
+        const simulateWavelengthMultiplexing = () => {
+            const phaseCards = document.querySelectorAll('.phase-card');
+            let currentPhase = 0;
+            
+            setInterval(() => {
+                phaseCards.forEach(card => {
+                    card.style.borderLeft = '4px solid #F28C28';
+                    card.style.transform = 'scale(1)';
+                });
+                
+                if (phaseCards[currentPhase]) {
+                    phaseCards[currentPhase].style.borderLeft = '4px solid #E88C2D';
+                    phaseCards[currentPhase].style.backgroundColor = 'rgba(242, 140, 40, 0.1)';
+                    phaseCards[currentPhase].style.transform = 'scale(1.02)';
+                    
+                    setTimeout(() => {
+                        phaseCards[currentPhase].style.backgroundColor = '';
+                        phaseCards[currentPhase].style.transform = 'scale(1)';
+                    }, 2000);
+                }
+                
+                currentPhase = (currentPhase + 1) % phaseCards.length;
+            }, 4000);
+        };
+
+        // Add optical network connectivity animation
+        const simulateOpticalConnectivity = () => {
+            const institutionHighlight = document.querySelector('.institution-highlight');
+            const formatHighlight = document.querySelector('.format-highlight');
+            
+            if (institutionHighlight && formatHighlight) {
+                setInterval(() => {
+                    institutionHighlight.style.boxShadow = '0 10px 30px rgba(232, 140, 45, 0.6)';
+                    formatHighlight.style.boxShadow = '0 10px 30px rgba(232, 140, 45, 0.6)';
+                    institutionHighlight.style.transform = 'scale(1.02)';
+                    formatHighlight.style.transform = 'scale(1.02)';
+                    
+                    setTimeout(() => {
+                        institutionHighlight.style.boxShadow = '0 10px 30px rgba(242, 140, 40, 0.3)';
+                        formatHighlight.style.boxShadow = '0 10px 30px rgba(242, 140, 40, 0.3)';
+                        institutionHighlight.style.transform = 'scale(1)';
+                        formatHighlight.style.transform = 'scale(1)';
+                    }, 1500);
+                }, 5000);
+            }
+        };
+
+        // Initialize simulations
+        document.addEventListener('DOMContentLoaded', () => {
+            simulateWavelengthMultiplexing();
+            simulateOpticalConnectivity();
+        });
+
+        // Add optical fiber pattern animation
+        const createOpticalPattern = () => {
+            const hero = document.querySelector('.hero');
+            for (let i = 0; i < 12; i++) {
+                const optical = document.createElement('div');
+                optical.innerHTML = Math.random() > 0.5 ? '💡' : '🌐';
+                optical.style.cssText = `
+                    position: absolute;
+                    font-size: 1.4rem;
+                    opacity: 0.15;
+                    animation: opticalFlow ${4 + Math.random() * 3}s ease-in-out infinite;
+                    top: ${20 + Math.random() * 60}%;
+                    left: ${Math.random() * 100}%;
+                    z-index: 1;
+                `;
+                hero.appendChild(optical);
+            }
+        };
+
+        // Add CSS animation for optical flow
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes opticalFlow {
+                0%, 100% { transform: translateY(0px) scale(0.8) opacity(0.1); }
+                25% { transform: translateY(-15px) scale(1.2) opacity(0.2); }
+                50% { transform: translateY(-25px) scale(1.4) opacity(0.25); }
+                75% { transform: translateY(-10px) scale(1.0) opacity(0.15); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize optical pattern
+        document.addEventListener('DOMContentLoaded', createOpticalPattern);
+
+        // Simulate DWDM channel multiplexing
+        const simulateDWDMChannels = () => {
+            const stats = document.querySelectorAll('.stat-number');
+            const channelStats = [stats[2], stats[3]]; // Virtual sessions and hands-on days
+            
+            if (channelStats[0] && channelStats[1]) {
+                setInterval(() => {
+                    channelStats.forEach(stat => {
+                        stat.style.color = Math.random() > 0.5 ? '#F28C28' : '#E88C2D';
+                        stat.style.textShadow = '0 0 10px rgba(242, 140, 40, 0.6)';
+                    });
+                    
+                    setTimeout(() => {
+                        channelStats.forEach(stat => {
+                            stat.style.textShadow = 'none';
+                        });
+                    }, 1000);
+                }, 3000);
+            }
+        };
+
+        // Start DWDM simulation after page load
+        setTimeout(simulateDWDMChannels, 4000);
+    </script>
+</body>
+</html>
